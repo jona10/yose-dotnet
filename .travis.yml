@@ -9,7 +9,6 @@ os:
 env:
   matrix:
     - CLI_VERSION=1.0.0-preview2-003121
-    - CLI_VERSION=Latest
 
 before_install:
   - sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
