@@ -19,4 +19,5 @@ before_install:
   
 script:
   - dotnet restore --infer-runtimes
-  - dotnet test ./src/Tests
+  - cd ./src/Tests
+  - dotnet test
