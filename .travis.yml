@@ -18,5 +18,5 @@ before_install:
   - sudo apt-get install dotnet-dev-1.0.0-preview2-003121
   
 script:
-  - dotnet restore
+  - dotnet restore --infer-runtimes
   - dotnet test ./src/Tests
