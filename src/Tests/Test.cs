@@ -8,7 +8,7 @@ namespace Tests
         [Fact]
         public void IsZero()
         {
-            1.Should().Be(0, "because 0 should be 0");
+            0.Should().Be(0, "because 0 should be 0");
         }
     }
 }
