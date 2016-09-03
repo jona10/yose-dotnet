@@ -1,33 +1,26 @@
 sudo: required
 dist: trusty
-
 os:
-  - linux
-
+- linux
 env:
   global:
-    - CLI_VERSION=1.0.0-preview2-003121
-    - CLI_ARCH=x64
-    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
-    - DOTNET_CLI_TELEMETRY_OPTOUT=1
-
+  - CLI_VERSION=1.0.0-preview2-003121
+  - CLI_ARCH=x64
+  - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+  - DOTNET_CLI_TELEMETRY_OPTOUT=1
 before_install:
-  - sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-  - sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-  - sudo apt-get update
-
+- sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/
+  trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
+- sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+- sudo apt-get update
 install:
-  - sudo apt-get install dotnet-dev-1.0.0-preview2-003121
-  - dotnet --info
-  
+- sudo apt-get install dotnet-dev-1.0.0-preview2-003121
+- dotnet --info
 script:
-  - dotnet restore --infer-runtimes
-  - dotnet test ./src/Tests
-
+- dotnet restore --infer-runtimes
+- dotnet test ./src/Tests
 deploy:
   provider: heroku
-  api_key:
-    secure: cFGwVhVgxx/RnXEsG7rYmjzxRAUGtIsJV+r3xpcO+9egpn960PMQarBMK9+xNx/VUU9YV1mRKWfRBFJCaMl+7LZZvMWJfNlCJSTqIcE04CMSqRUyhVaybdJqAOja1+LDFliqRF5JzIlQ+fsRGzc77Uwt4pwdcpD3zTuZEcdLxa+rbRPeP/7jVRo0q5CYM4rMAFDoOrex19Ph3wHpCEIRDu/qkb9U8mnnvsIA3H5ePRBD6ai2vinIAfrnxPbccSD64Q95qmWR4g76FaOUl6mvf2uo78Oyzhs2AXBSOCkdeL+uQsUW4a/tnd2GbeRoyJDDmxNv0hVgXw9K5joFxAKKyRnf4b+WFIb4H6TvNjst8fBeWhtA2TAOBwWvoFIbPg/RtJFfi09jWRFX74V+br7NX+A2HCr/V/EiJb21bOWHLE2y07aZpAxh0mn6ZpSNWJQQC4zRHVpgLIDxqJ+C8fDcJnwirZcaxYozvIvGrOD269wv/UJq376tK9MKFArF+B+y1g0QwkVM50bWx/TBU81uQxXgcTC8jqOSSLiKKAJYNTVoaxygzbjHJ7ZN0rqgs4gKAQYyaZLYPE1oq1K6wI/67jG3qPO8YBFPYooqSV4ctQUtOyhKPGkwAv4KNsgL5bH1aKiHeNeypM48SQsXxlQ/xPaSdRTISx5QAsvcYAo2X3s=
   app: yose-dotnet
-  on:
-    repo: jona10/yose-dotnet
+  api_key:
+    secure: XK+mG0QaIYsIfM1r9CrdrttyUdyPZsqcK5HG3I4M/4uSV23wK3LlYyeNUGiLw0Moz/MOrjX5HN1maqsQaIpGYJ1Qb3ioaXGHWuCpTJH6KEEfTs5xpXrfUoIsh8toqJRW0ArYo5AsRLNUnqN5sie5XTvZ5LHaqsucu1vR3HqWApZgqOuOvd0IFI1DNaWHb7OT92Ca1DG0faA8H9ghJRPLwy9/K9ow03RNGglpfsXwK4dxzeWFFv4kCNk9LzicYznX5b6rzK5A4O5ETBPfaPmEv5qLuAlCvtiEWUqosFhNKsevc31kJ0aw+HxFdED5rvpG7v2bZumoc6xQSX/HnjxNLziUzC3o4NlgijH8l68Fk5d50til+JlVaRNnVTMb6wuAjqtBqw6DrMs05WBc4Czk3+v1uzpE4xZEmlw4f0MPfLTDI0Ttql55vlYueIXgXx/6xnhUxu3Ops9DxVZuJTglUvKa2JtUqNL76DL1ebO5hrUeM+lfZrJcFRvWWkUPcL0HD/0YUBsJLbcaUEfDomWj4jLJuHxMRGWbLa2y5KP4NCFfua3fyK01fxcVc/V6oscw4/7v7ayOchGOks1ukM34cmW6oy6ELlRpgJw9KMApqGkRDVWFbeYhrQblhAshr+Om+xF73uN/LBjDC3vrdKrMx/6OVG3VhT4jNNGnKyUg9Ls=
