@@ -6,13 +6,13 @@ namespace Tests.Challenges.Start
 {
     public class FirstWebPageTests : IDisposable
     {
-        private Player _player;
+        private PlayerDriver _player;
         private Server _server;
 
         public FirstWebPageTests()
         {
             _server = new Server();
-            _player = new Player(_server);
+            _player = new PlayerDriver(_server);
         }
 
         public void Dispose()

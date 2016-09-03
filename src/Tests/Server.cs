@@ -1,9 +1,8 @@
 ﻿using FluentAssertions;
 using HtmlAgilityPack;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.Extensions.Configuration;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Net.Http;
 using Yose;
 
@@ -11,30 +10,26 @@ namespace Tests
 {
     public class Server
     {
-        private IWebHost _host;
+        private Player _host;
 
         public Server()
         {
-            _host = new WebHostBuilder()
-                .UseKestrel()
-                .UseStartup<Player>()
-                .Build();
-            _host.Start();
-        }
+            var configuration = new Dictionary<string, string> {
+                {"server.urls", "http://localhost:9000"}
+            };
 
-        private string Address()
-        {
-            return ((IServerAddressesFeature)_host.ServerFeatures[typeof(IServerAddressesFeature)]).Addresses.First();
+            _host = new Player();
+            _host.Start(new ConfigurationBuilder().AddInMemoryCollection(configuration).Build());
         }
 
         public void Stop()
         {
-            _host.Dispose();
+            _host.Stop();
         }
 
         public HtmlDocument Get(string uri)
         {
-            using (var client = new HttpClient { BaseAddress = new Uri(Address()) })
+            using (var client = new HttpClient { BaseAddress = new Uri(_host.Uri()) })
             {
                 var response = client.GetAsync("/").Result;
                 response.IsSuccessStatusCode.Should().BeTrue("because the resource should exist");

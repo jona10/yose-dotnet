@@ -11,10 +11,6 @@ namespace Yose
     {
         private IWebHost _host;
 
-        public Player()
-        {
-        }
-
         public string Uri()
         {
             return ((IServerAddressesFeature)_host.ServerFeatures[typeof(IServerAddressesFeature)]).Addresses.First();

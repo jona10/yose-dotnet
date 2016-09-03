@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Tests.Drivers
 {
-    public class Player
+    public class PlayerDriver
     {
         private Server _server;
 
-        public Player(Server server)
+        public PlayerDriver(Server server)
         {
             _server = server;
         }
