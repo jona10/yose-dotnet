@@ -23,3 +23,11 @@ install:
 script:
   - dotnet restore --infer-runtimes
   - dotnet test ./src/Tests
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: cFGwVhVgxx/RnXEsG7rYmjzxRAUGtIsJV+r3xpcO+9egpn960PMQarBMK9+xNx/VUU9YV1mRKWfRBFJCaMl+7LZZvMWJfNlCJSTqIcE04CMSqRUyhVaybdJqAOja1+LDFliqRF5JzIlQ+fsRGzc77Uwt4pwdcpD3zTuZEcdLxa+rbRPeP/7jVRo0q5CYM4rMAFDoOrex19Ph3wHpCEIRDu/qkb9U8mnnvsIA3H5ePRBD6ai2vinIAfrnxPbccSD64Q95qmWR4g76FaOUl6mvf2uo78Oyzhs2AXBSOCkdeL+uQsUW4a/tnd2GbeRoyJDDmxNv0hVgXw9K5joFxAKKyRnf4b+WFIb4H6TvNjst8fBeWhtA2TAOBwWvoFIbPg/RtJFfi09jWRFX74V+br7NX+A2HCr/V/EiJb21bOWHLE2y07aZpAxh0mn6ZpSNWJQQC4zRHVpgLIDxqJ+C8fDcJnwirZcaxYozvIvGrOD269wv/UJq376tK9MKFArF+B+y1g0QwkVM50bWx/TBU81uQxXgcTC8jqOSSLiKKAJYNTVoaxygzbjHJ7ZN0rqgs4gKAQYyaZLYPE1oq1K6wI/67jG3qPO8YBFPYooqSV4ctQUtOyhKPGkwAv4KNsgL5bH1aKiHeNeypM48SQsXxlQ/xPaSdRTISx5QAsvcYAo2X3s=
+  app: yose-dotnet
+  on:
+    repo: jona10/yose-dotnet
