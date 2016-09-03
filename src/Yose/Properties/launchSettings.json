@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Yose": {
+      "commandName": "Project",
+      "commandLineArgs": "-e dev"
+    }
+  }
+}
