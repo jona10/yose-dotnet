@@ -15,7 +15,7 @@ namespace Tests
         public Server()
         {
             var configuration = new Dictionary<string, string> {
-                {"server.urls", "http://localhost:9000"}
+                {"server.urls", "http://localhost:9001"}
             };
 
             _host = new Player();

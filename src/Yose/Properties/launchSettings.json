@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Yose": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "--server.urls http://localhost:9000"
     }
   }
 }
