@@ -16,13 +16,7 @@ namespace Yose
 
         private void Launch()
         {
-            _player.Start(_configuration);
-
-            Console.WriteLine("Yose player server started on {0}", _player.Uri());
-            Console.Read();
-            Console.WriteLine("Yose player server stopping");
-
-            _player.Stop();
+            _player.Run(_configuration);
         }
 
         public static void Main(string[] args)

@@ -18,13 +18,23 @@ namespace Yose
 
         public void Start(IConfiguration configuration)
         {
-            _host = new WebHostBuilder()
+            _host = BuildWebHost(configuration);
+            _host.Start();
+        }
+
+        public void Run(IConfiguration configuration)
+        {
+            _host = BuildWebHost(configuration);
+            _host.Run();
+        }
+
+        private static IWebHost BuildWebHost(IConfiguration configuration)
+        {
+            return new WebHostBuilder()
                 .UseConfiguration(configuration)
                 .UseKestrel()
                 .UseStartup<Player>()
                 .Build();
-
-            _host.Start();
         }
 
         public void Stop()
