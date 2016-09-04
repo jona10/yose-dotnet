@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Yose
 {
@@ -46,8 +48,22 @@ namespace Yose
         {
             app.Run(context =>
             {
+                if (context.Request.Path.Equals("/ping"))
+                {
+                    context.Response.ContentType = "application/json";
+                    return context.Response.WriteAsync(JsonConvert.SerializeObject(new Ping { IsAlive = true }, new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    }));
+                }
+
                 return context.Response.WriteAsync("<h1 id='hello-yose'>Hello Yose</h1>");
             });
+        }
+
+        private class Ping
+        {
+            public bool IsAlive;
         }
     }
 }
