@@ -3,26 +3,21 @@ using HtmlAgilityPack.CssSelectors.NetCore;
 using System.Linq;
 using System;
 using System.Net.Http;
-using Yose;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using Tests.Extensions;
 
 namespace Tests.Drivers
 {
     public class PlayerDriver
     {
-        private Player _player;
+        private IWebHost _host;
 
-        public PlayerDriver(Player player)
+        public PlayerDriver(IWebHost host)
         {
-            var configuration = new Dictionary<string, string> {
-                {"server.urls", "http://localhost:9001"}
-            };
-
-            _player = player;
-            _player.Start(new ConfigurationBuilder().AddInMemoryCollection(configuration).Build());
+            _host = host;
+            _host.Start();
         }
 
         public void GreetsYose()
@@ -57,12 +52,12 @@ namespace Tests.Drivers
 
         private HttpClient CreateClient()
         {
-            return new HttpClient { BaseAddress = new Uri(_player.Uri()) };
+            return new HttpClient { BaseAddress = new Uri(_host.Uri()) };
         }
 
         private class Ping
         {
-            public bool IsAlive;
+            public bool IsAlive { get; set; }
         }
     }
 }
