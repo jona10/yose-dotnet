@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Yose", "src\Yose\Yose.xproj", "{934A4C24-5EC9-48A4-8396-51D377CECD10}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tests", "src\Tests\Tests.xproj", "{76719921-7B54-45AF-A7DC-70AF9BD5E28C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Yose", "src\Yose\Yose.xproj", "{93172006-1BCC-4016-87B4-6ECA1BF74E28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,20 +25,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{934A4C24-5EC9-48A4-8396-51D377CECD10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{934A4C24-5EC9-48A4-8396-51D377CECD10}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{934A4C24-5EC9-48A4-8396-51D377CECD10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{934A4C24-5EC9-48A4-8396-51D377CECD10}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76719921-7B54-45AF-A7DC-70AF9BD5E28C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76719921-7B54-45AF-A7DC-70AF9BD5E28C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76719921-7B54-45AF-A7DC-70AF9BD5E28C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76719921-7B54-45AF-A7DC-70AF9BD5E28C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93172006-1BCC-4016-87B4-6ECA1BF74E28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93172006-1BCC-4016-87B4-6ECA1BF74E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93172006-1BCC-4016-87B4-6ECA1BF74E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93172006-1BCC-4016-87B4-6ECA1BF74E28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{934A4C24-5EC9-48A4-8396-51D377CECD10} = {BC331C2A-74DA-4992-89E8-65B118CBDA2B}
 		{76719921-7B54-45AF-A7DC-70AF9BD5E28C} = {BC331C2A-74DA-4992-89E8-65B118CBDA2B}
+		{93172006-1BCC-4016-87B4-6ECA1BF74E28} = {BC331C2A-74DA-4992-89E8-65B118CBDA2B}
 	EndGlobalSection
 EndGlobal

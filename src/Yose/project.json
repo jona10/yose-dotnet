@@ -23,5 +23,10 @@
         }
       }
     }
+  },
+  "publishOptions": {
+    "include": [
+      "wwwroot"
+    ]
   }
 }
