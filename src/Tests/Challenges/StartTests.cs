@@ -8,23 +8,23 @@ namespace Tests.Challenges
     public class StartTests : IClassFixture<TestServerFixture<Startup>>
     {
         private const string SolutionName = "Yose.sln";
-        private PlayerDriver _driver;
+        private YoseDriver _driver;
 
         public StartTests(TestServerFixture<Startup> server)
         {
-            _driver = new PlayerDriver(server.Client);
+            _driver = new YoseDriver(server.Client);
         }
 
         [Fact]
-        public void GreetsYose()
+        public void Greets()
         {
-            _driver.GreetsYose();
+            _driver.Home().GreetsWith("Hello Yose");
         }
 
         [Fact]
-        public void AnswersPing()
+        public void IsAlive()
         {
-            _driver.Pings();
+            _driver.Api().IsAlive();
         }
     }
 }
