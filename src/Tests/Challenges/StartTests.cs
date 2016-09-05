@@ -26,5 +26,11 @@ namespace Tests.Challenges
         {
             _driver.Api().IsAlive();
         }
+
+        [Fact]
+        public void LinksToRepository()
+        {
+            _driver.Home().LinksToRepository("https://github.com/jona10/yose-dotnet");
+        }
     }
 }

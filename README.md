@@ -1,1 +1,1 @@
-# yose-dotnet
+# YoseTheGame - Dotnet core edition
