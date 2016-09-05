@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
-    "FluentAssertions": "4.13.0",
+    "FluentAssertions": "4.13.1",
     "HtmlAgilityPack.CssSelectors.NetCore": "1.0.0",
     "HtmlAgilityPack.NetCore": "1.5.0.1",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
