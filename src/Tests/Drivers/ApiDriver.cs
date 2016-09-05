@@ -22,12 +22,12 @@ namespace Tests.Drivers
 
             var ping = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result, typeof(Ping));
             ping.Should().NotBeNull("because the response should be JSON formatted");
-            ping.Should().BeOfType<Ping>().Which.IsAlive.Should().BeTrue("because the application should be alive");
+            ping.Should().BeOfType<Ping>().Which.Alive.Should().BeTrue("because the application should be alive");
         }
 
         private class Ping
         {
-            public bool IsAlive { get; set; }
+            public bool Alive { get; set; }
         }
     }
 }

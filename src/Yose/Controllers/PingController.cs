@@ -11,7 +11,7 @@ namespace Yose.Controllers
         {
             context.Response.ContentType = "application/json";
 
-            await context.Response.WriteAsync(JsonConvert.SerializeObject(new Ping { IsAlive = true }, ToCamelCase()));
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(new Ping { Alive = true }, ToCamelCase()));
         }
 
         private static JsonSerializerSettings ToCamelCase()
@@ -21,7 +21,7 @@ namespace Yose.Controllers
 
         private class Ping
         {
-            public bool IsAlive;
+            public bool Alive;
         }
     }
 }
