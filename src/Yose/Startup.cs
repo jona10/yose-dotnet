@@ -25,6 +25,7 @@ namespace Yose
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseRouter(ConfigureRoutes(app, env));
         }
@@ -32,7 +33,6 @@ namespace Yose
         private IRouter ConfigureRoutes(IApplicationBuilder app, IHostingEnvironment env)
         {
             return new RouteBuilder(app)
-                .MapGet("", new HomePageController(env).Get)
                 .MapGet("ping", new PingController().Get)
                 .Build();
         }
