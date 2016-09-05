@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using Yose.Controllers;
 
 namespace Yose
 {
@@ -12,6 +12,7 @@ namespace Yose
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRouting();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -25,25 +26,15 @@ namespace Yose
             }
 
             app.UseStaticFiles();
-
-            app.Run(context =>
-            {
-                if (context.Request.Path.Equals("/ping"))
-                {
-                    context.Response.ContentType = "application/json";
-                    return context.Response.WriteAsync(JsonConvert.SerializeObject(new Ping { IsAlive = true }, new JsonSerializerSettings
-                    {
-                        ContractResolver = new CamelCasePropertyNamesContractResolver()
-                    }));
-                }
-
-                return context.Response.WriteAsync("<h1 id='hello-yose'>Hello Yose</h1>");
-            });
+            app.UseRouter(ConfigureRoutes(app, env));
         }
 
-        private class Ping
+        private IRouter ConfigureRoutes(IApplicationBuilder app, IHostingEnvironment env)
         {
-            public bool IsAlive;
+            return new RouteBuilder(app)
+                .MapGet("", new HomePageController(env).Get)
+                .MapGet("ping", new PingController().Get)
+                .Build();
         }
     }
 }

@@ -1,33 +1,30 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Tests.Drivers;
+﻿using Tests.Drivers;
+using Tests.Fixtures;
 using Xunit;
 using Yose;
 
 namespace Tests.Challenges
 {
-    public class StartTests
+    public class StartTests : IClassFixture<TestServerFixture<Startup>>
     {
+        private const string SolutionName = "Yose.sln";
         private PlayerDriver _driver;
-        private IWebHost _host;
 
-        public StartTests()
+        public StartTests(TestServerFixture<Startup> server)
         {
-            _host = new WebHostBuilder().UseKestrel().UseStartup<Startup>().Build();
-            _driver = new PlayerDriver(_host);
+            _driver = new PlayerDriver(server.Client);
         }
 
         [Fact]
         public void GreetsYose()
         {
             _driver.GreetsYose();
-            _host.Dispose();
         }
 
         [Fact]
         public void AnswersPing()
         {
             _driver.Pings();
-            _host.Dispose();
         }
     }
 }
