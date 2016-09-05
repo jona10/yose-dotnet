@@ -46,27 +46,25 @@ namespace Tests.Fixtures
         private static string GetProjectPath(string solutionRelativePath, Assembly startupAssembly)
         {
             var projectName = startupAssembly.GetName().Name;
-            var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;
+            var directoryInfo = new DirectoryInfo(PlatformServices.Default.Application.ApplicationBasePath);
 
-            return FindProjectPath(solutionRelativePath, projectName, applicationBasePath);
+            return GetProjectPath(directoryInfo, solutionRelativePath, projectName);
         }
 
-        private static string FindProjectPath(string solutionRelativePath, string projectName, string applicationBasePath)
+        private static string GetProjectPath(DirectoryInfo directoryInfo, string solutionRelativePath, string projectName)
         {
-            var directoryInfo = new DirectoryInfo(applicationBasePath);
-            do
+            var solutionFileInfo = new FileInfo(Path.Combine(directoryInfo.FullName, SolutionName));
+            if (solutionFileInfo.Exists)
             {
-                var solutionFileInfo = new FileInfo(Path.Combine(directoryInfo.FullName, SolutionName));
-                if (solutionFileInfo.Exists)
-                {
-                    return Path.GetFullPath(Path.Combine(directoryInfo.FullName, solutionRelativePath, projectName));
-                }
-
-                directoryInfo = directoryInfo.Parent;
+                return Path.GetFullPath(Path.Combine(directoryInfo.FullName, solutionRelativePath, projectName));
             }
-            while (directoryInfo.Parent != null);
 
-            throw new Exception($"Solution root could not be located using application root {applicationBasePath}.");
+            if (directoryInfo.Parent == null)
+            {
+                throw new Exception($"Solution root could not be located using application root {directoryInfo.Name}.");
+            }
+
+            return GetProjectPath(directoryInfo.Parent, solutionRelativePath, projectName);
         }
     }
 }
