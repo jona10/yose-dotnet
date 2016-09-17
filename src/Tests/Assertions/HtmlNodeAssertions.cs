@@ -1,9 +1,7 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 using HtmlAgilityPack;
-using System.Linq;
 
 namespace Tests.Assertions
 {
