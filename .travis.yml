@@ -20,7 +20,7 @@ install:
 script:
 - dotnet restore --infer-runtimes
 - dotnet test ./src/Tests
-- ~/.dnx/runtimes/dnx-clr-win-x86.1.0.0-beta6/bin/dnx.exe --version
+- dotnet ~/.nuget/packages/OpenCover/4.6.519/tools/OpenCover.Console.exe -- -v
 - mono ~/.nuget/packages/OpenCover/4.6.519/tools/OpenCover.Console.exe -target:"dotnet" -targetargs:"test ./src/Tests" -output:coverage.xml -register:user -filter:"+[Yose*]* -[Tests*]*" -oldStyle
 deploy:
   provider: heroku
