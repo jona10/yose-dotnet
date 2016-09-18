@@ -1,4 +1,3 @@
-language: csharp
 sudo: required
 dist: trusty
 os:
@@ -20,8 +19,6 @@ install:
 script:
 - dotnet restore --infer-runtimes
 - dotnet test ./src/Tests
-- dotnet ~/.nuget/packages/OpenCover/4.6.519/tools/OpenCover.Console.exe -- -v
-- mono ~/.nuget/packages/OpenCover/4.6.519/tools/OpenCover.Console.exe -target:"dotnet" -targetargs:"test ./src/Tests" -output:coverage.xml -register:user -filter:"+[Yose*]* -[Tests*]*" -oldStyle
 deploy:
   provider: heroku
   app: yose-dotnet
