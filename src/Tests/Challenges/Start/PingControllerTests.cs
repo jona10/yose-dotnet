@@ -25,7 +25,7 @@ namespace Tests.Challenges.Start
         {
             await _controller.Get(_context);
 
-            _context.Response.ContentType.Should().Be("application/json", "because the returned content should be JSON");
+            _context.Response.ContentType.Should().Be("application/json");
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace Tests.Challenges.Start
         {
             await _controller.Get(_context);
 
-            _context.Response.ReadAsString().Should().Be("{\"alive\":true}", "because the content should show that the server is alive");
+            _context.Response.ReadAsString().Should().Be("{\"alive\":true}");
         }
     }
 }
