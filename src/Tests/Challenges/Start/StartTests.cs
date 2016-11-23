@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Tests.Assertions;
 using Tests.Fixtures;
@@ -11,7 +9,7 @@ namespace Tests.Challenges.Start
 {
     public class StartTests : IClassFixture<TestServerFixture<Startup>>
     {
-        private HttpClient _client;
+        private readonly HttpClient _client;
 
         public StartTests(TestServerFixture<Startup> server)
         {

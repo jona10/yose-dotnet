@@ -11,7 +11,12 @@ namespace Yose.Controllers
         {
             context.Response.ContentType = "application/json";
 
-            await context.Response.WriteAsync(JsonConvert.SerializeObject(new Ping { Alive = true }, ToCamelCase()));
+            await context.Response.WriteAsync(ToJson(new Ping { Alive = true }));
+        }
+
+        private static string ToJson(Ping ping)
+        {
+            return JsonConvert.SerializeObject(ping, ToCamelCase());
         }
 
         private static JsonSerializerSettings ToCamelCase()

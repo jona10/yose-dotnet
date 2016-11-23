@@ -10,8 +10,8 @@ namespace Tests.Challenges.Start
 {
     public class PingControllerTests
     {
-        private PingController _controller;
-        private HttpContext _context;
+        private readonly PingController _controller;
+        private readonly HttpContext _context;
 
         public PingControllerTests()
         {

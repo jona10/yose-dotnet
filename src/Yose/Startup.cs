@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -30,7 +29,7 @@ namespace Yose
             app.UseRouter(ConfigureRoutes(app, env));
         }
 
-        private IRouter ConfigureRoutes(IApplicationBuilder app, IHostingEnvironment env)
+        private static IRouter ConfigureRoutes(IApplicationBuilder app, IHostingEnvironment env)
         {
             return new RouteBuilder(app)
                 .MapGet("ping", new PingController().Get)
