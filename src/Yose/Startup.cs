@@ -14,7 +14,7 @@ namespace Yose
             services.AddRouting();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(LogLevel.Debug, true);
             loggerFactory.AddDebug();
@@ -29,7 +29,7 @@ namespace Yose
             app.UseRouter(ConfigureRoutes(app, env));
         }
 
-        private static IRouter ConfigureRoutes(IApplicationBuilder app, IHostingEnvironment env)
+        private static IRouter ConfigureRoutes(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             return new RouteBuilder(app)
                 .MapGet("ping", new PingController().Get)
