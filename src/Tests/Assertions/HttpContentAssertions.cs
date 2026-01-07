@@ -8,9 +8,8 @@ namespace Tests.Assertions
 {
     public class HttpContentAssertions : ReferenceTypeAssertions<HttpContent, HttpContentAssertions>
     {
-        public HttpContentAssertions(HttpContent content)
+        public HttpContentAssertions(HttpContent content) : base(content)
         {
-            Subject = content;
         }
 
         protected override string Identifier => "htmlnode";
@@ -21,7 +20,7 @@ namespace Tests.Assertions
             Execute.Assertion
                 .ForCondition(body.Equals(actualBody))
                 .BecauseOf(because, becauseArgs)
-                .FailWith("Expected {context:" + Context + "} to be {0}{reason}, but was {1}.", body, actualBody);
+                .FailWith("Expected {context:" + Identifier + "} to be {0}{reason}, but was {1}.", body, actualBody);
 
             return new AndConstraint<HttpContentAssertions>(this);
         }
@@ -32,7 +31,7 @@ namespace Tests.Assertions
             Execute.Assertion
                 .ForCondition(actualBody.Contains(body))
                 .BecauseOf(because, becauseArgs)
-                .FailWith("Expected {context:" + Context + "} to contain {0}{reason}, but body was {1}.", body, actualBody);
+                .FailWith("Expected {context:" + Identifier + "} to contain {0}{reason}, but body was {1}.", body, actualBody);
 
             return new AndConstraint<HttpContentAssertions>(this);
         }
