@@ -13,7 +13,7 @@ namespace Tests.Assertions
             Subject = content;
         }
 
-        protected override string Context { get; } = typeof(HttpContent).Name;
+        protected override string Identifier { get; } = "htmlnode";
 
         public AndConstraint<HttpContentAssertions> Be(string body, string because = "", params object[] becauseArgs)
         {
