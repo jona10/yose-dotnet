@@ -8,9 +8,8 @@ namespace Tests.Assertions
 {
     public class HttpResponseMessageAssertions : ReferenceTypeAssertions<HttpResponseMessage, HttpResponseMessageAssertions>
     {
-        public HttpResponseMessageAssertions(HttpResponseMessage response)
+        public HttpResponseMessageAssertions(HttpResponseMessage response) : base(response)
         {
-            Subject = response;
         }
 
         protected override string Identifier => "htmlnode";
@@ -20,7 +19,7 @@ namespace Tests.Assertions
             Execute.Assertion
                 .ForCondition(Subject.StatusCode == HttpStatusCode.OK)
                 .BecauseOf(because, becauseArgs)
-                .FailWith("Expected {context:" + Context + "} to be OK{reason}, but was {0}.", Subject.StatusCode);
+                .FailWith("Expected {context:" + Identifier + "} to be OK{reason}, but was {0}.", Subject.StatusCode);
 
             return new AndConstraint<HttpResponseMessageAssertions>(this);
         }
