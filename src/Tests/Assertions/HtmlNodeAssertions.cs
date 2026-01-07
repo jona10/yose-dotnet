@@ -12,7 +12,7 @@ namespace Tests.Assertions
             Subject = subject;
         }
 
-        protected override string Context { get; } = typeof(HtmlNode).Name;
+        protected override string Identifier { get; } = "htmlnode";
 
         public AndWhichConstraint<HtmlNodeAssertions, HtmlNode> BeAnAnchor(string because = "", params object[] becauseArgs)
         {
