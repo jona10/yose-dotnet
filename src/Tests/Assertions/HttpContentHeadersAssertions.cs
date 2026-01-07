@@ -8,9 +8,8 @@ namespace Tests.Assertions
 {
     public class HttpContentHeadersAssertions : ReferenceTypeAssertions<HttpContentHeaders, HttpContentHeadersAssertions>
     {
-        public HttpContentHeadersAssertions(HttpContentHeaders headers)
+        public HttpContentHeadersAssertions(HttpContentHeaders headers) : base(headers)
         {
-            Subject = headers;
         }
 
         protected override string Identifier => "htmlnode";
@@ -20,7 +19,7 @@ namespace Tests.Assertions
             Execute.Assertion
                 .ForCondition(Subject.Contains(header))
                 .BecauseOf(because, becauseArgs)
-                .FailWith("Expected {context:" + Context + "} to have header {0}{reason}, but none was found.", header);
+                .FailWith("Expected {context:" + Identifier + "} to have header {0}{reason}, but none was found.", header);
 
             var headerContent = Subject.GetValues(header).First();
 
