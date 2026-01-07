@@ -44,7 +44,7 @@ namespace Tests.Assertions
             Subject = subject;
         }
 
-        protected override string Identifier { get; } = "htmlnode";
+        protected override string Identifier => "htmlnode";
 
         public AndConstraint<HtmlAttributeAssertions> HaveValue(string value, string because = "", params object[] becauseArgs)
         {
