@@ -13,7 +13,7 @@ namespace Tests.Assertions
             Subject = response;
         }
 
-        protected override string Identifier { get; } = "htmlnode";
+        protected override string Identifier => "htmlnode";
 
         public AndConstraint<HttpResponseMessageAssertions> BeOk(string because = "", params object[] becauseArgs)
         {
