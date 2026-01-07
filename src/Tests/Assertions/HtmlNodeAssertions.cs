@@ -7,9 +7,8 @@ namespace Tests.Assertions
 {
     public class HtmlNodeAssertions: ReferenceTypeAssertions<HtmlNode, HtmlNodeAssertions>
     {
-        public HtmlNodeAssertions(HtmlNode subject)
+        public HtmlNodeAssertions(HtmlNode subject) : base(subject)
         {
-            Subject = subject;
         }
 
         protected override string Identifier => "htmlnode";
@@ -19,7 +18,7 @@ namespace Tests.Assertions
             Execute.Assertion
                 .ForCondition(Subject.Name.Equals("a"))
                 .BecauseOf(because, becauseArgs)
-                .FailWith("Expected {context:" + Context + "} to be an anchor{reason}, but was {0}.", Subject.Name);
+                .FailWith("Expected {context:" + Identifier + "} to be an anchor{reason}, but was {0}.", Subject.Name);
 
             return new AndWhichConstraint<HtmlNodeAssertions, HtmlNode>(this, Subject);
         }
@@ -29,7 +28,7 @@ namespace Tests.Assertions
             Execute.Assertion
                 .ForCondition(Subject.Attributes.Contains(name))
                 .BecauseOf(because, becauseArgs)
-                .FailWith("Expected {context:" + Context + "} to contain an attribute named {0}{reason}, but none was found.", name);
+                .FailWith("Expected {context:" + Identifier + "} to contain an attribute named {0}{reason}, but none was found.", name);
 
             var attribute = Subject.Attributes[name];
 
@@ -39,9 +38,8 @@ namespace Tests.Assertions
 
     public class HtmlAttributeAssertions : ReferenceTypeAssertions<HtmlAttribute, HtmlAttributeAssertions>
     {
-        public HtmlAttributeAssertions(HtmlAttribute subject)
+        public HtmlAttributeAssertions(HtmlAttribute subject) : base(subject)
         {
-            Subject = subject;
         }
 
         protected override string Identifier => "htmlnode";
@@ -51,7 +49,7 @@ namespace Tests.Assertions
             Execute.Assertion
                 .ForCondition(Subject.Value.Equals(value))
                 .BecauseOf(because, becauseArgs)
-                .FailWith("Expected {context:" + Context + "} {0} to have a value of {1}{reason}, but value was {2}.", Subject.Name, value, Subject.Value);
+                .FailWith("Expected {context:" + Identifier + "} {0} to have a value of {1}{reason}, but value was {2}.", Subject.Name, value, Subject.Value);
 
             return new AndConstraint<HtmlAttributeAssertions>(this);
         }
