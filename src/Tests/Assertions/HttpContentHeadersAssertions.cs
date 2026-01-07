@@ -13,7 +13,7 @@ namespace Tests.Assertions
             Subject = headers;
         }
 
-        protected override string Identifier { get; } = "htmlnode";
+        protected override string Identifier => "htmlnode";
 
         public AndConstraint<StringAssertions> Contain(string header, string because = "", params object[] becauseArgs)
         {
